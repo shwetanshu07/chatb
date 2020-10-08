@@ -3,6 +3,7 @@ from wtforms_fields import *
 from models import *
 from passlib.hash import pbkdf2_sha256
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
+from flask_socketio import SocketIO, send, emit
 
 # Configue app
 app = Flask(__name__)
@@ -11,6 +12,9 @@ app.secret_key = 'replace later'
 # Configure database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://lrpzmxykmzcbsu:2f135748bbc1c3a35f0377e465eb4cdfdf58678df1105d43b62d49c0d0b5f2c9@ec2-23-20-70-32.compute-1.amazonaws.com:5432/dfakdbh4li0103'
 db = SQLAlchemy(app)
+
+# Initialise Flask-Socketio
+socketio = SocketIO(app)
 
 # Configure login session
 login = LoginManager(app)
@@ -55,11 +59,13 @@ def login():
 
 @app.route("/chat", methods=['GET', 'POST'])
 def chat():
-    if not current_user.is_authenticated:
-        flash("Please login before joining the chatroom.", "danger")
-        return redirect(url_for('login'))
+    # if not current_user.is_authenticated:
+    #     flash("Please login before joining the chatroom.", "danger")
+    #     return redirect(url_for('login'))
+
+
     
-    return "Chat with me"
+    return render_template('chat.html')
 
 
 @app.route("/logout", methods=['GET'])
@@ -69,5 +75,11 @@ def logout():
     return redirect(url_for('login'))
 
 
+@socketio.on('message')
+def message(data):
+    print(f"\n{data}\n")
+    send(data)
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app, debug=True)
