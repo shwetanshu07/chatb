@@ -3,6 +3,17 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
 from models import User
 
+def invalid_credentials(form, field):
+    """ Username and Password check for login """
+    username_entered = form.username.data
+    password_entered = field.data
+    user_object = User.query.filter_by(username=username_entered).first()
+    if user_object is None:
+        raise ValidationError("Invalid Username or Password")
+    elif password_entered != user_object.password:
+        raise ValidationError("Invalid Username or Password")
+
+
 class RegistrationForm(FlaskForm):
     """ Registration Form """
     username = StringField('username_label', validators=[InputRequired(message="Username Required"),
@@ -17,3 +28,10 @@ class RegistrationForm(FlaskForm):
         user_object = User.query.filter_by(username=username.data).first()
         if(user_object):
             raise ValidationError("Useraname already exists.")
+
+class LoginForm(FlaskForm):
+    """ Login Form """
+    username = StringField('username_label', validators=[InputRequired(message="Username Required")])
+    password = PasswordField('password_label', validators=[InputRequired(message="Password Required"),
+                            invalid_credentials])
+    submit_button = SubmitField('Login')
