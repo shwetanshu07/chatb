@@ -6,6 +6,18 @@
     <title>{% block title%} {% endblock %}</title>
 </head>
 <body>
+    <!-- Flashing messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- the function will return list of tuple of message in this manner : ('category', 'message') -->
+        <!-- since other pages are going to inherit this base temnplate first check if the list is not empty -->
+        {% if messages %}
+
+            Category: {{messages[0][0]}}
+            {{messages[0][1]}}
+
+        {% endif %}
+    {% endwith %}
+
     {% block content %}
     {% endblock %}
 </body>
