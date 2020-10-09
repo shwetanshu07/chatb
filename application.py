@@ -3,7 +3,8 @@ from wtforms_fields import *
 from models import *
 from passlib.hash import pbkdf2_sha256
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
-from flask_socketio import SocketIO, send, emit
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from time import localtime, strftime
 
 # Configue app
 app = Flask(__name__)
@@ -15,6 +16,7 @@ db = SQLAlchemy(app)
 
 # Initialise Flask-Socketio
 socketio = SocketIO(app)
+ROOMS = ["Lounge", "News", "Games", "Technology"]
 
 # Configure login session
 login = LoginManager(app)
@@ -65,7 +67,7 @@ def chat():
 
 
     
-    return render_template('chat.html')
+    return render_template('chat.html', username = current_user.username, rooms=ROOMS)
 
 
 @app.route("/logout", methods=['GET'])
@@ -78,7 +80,21 @@ def logout():
 @socketio.on('message')
 def message(data):
     print(f"\n{data}\n")
-    send(data)
+    send({'msg':data['msg'], 'username': data['username'], 'time_stamp': strftime('%b-%d %I:%M%p', localtime())}, room=data['room'])
+
+@socketio.on('join')
+def join(data):
+    join_room(data['room'])
+    send({'msg': data['username'] + 'has joined the' + data['room'] + 'room.'},
+            room = data['room'])
+
+@socketio.on('leave')
+def leave(data):
+    leave_room(data['room'])
+    send({'msg': data['username'] + 'has left the' + data['room'] + 'room.'},
+            room = data['room'])
+
+    
 
 
 if __name__ == "__main__":
