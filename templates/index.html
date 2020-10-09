@@ -5,7 +5,8 @@
 {% block title %}Registration{% endblock %}
 
 {% block content %}
-    <h1>Get Started</h1>
+    <h2>Get Started</h2>
+    <p>An online chat room application. Join different rooms. Meet new people.</p>
     <form action="{{ url_for('index') }}", method="POST">
 
         {{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }}
@@ -17,6 +18,8 @@
         {{ form.csrf_token }}
 
     </form>
+    <br>
+    <p>Already registered? <a href={{url_for('login')}}>Login here</a>.</p>
 
 
 {% endblock %}

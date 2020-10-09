@@ -1,0 +1,40 @@
+h1 {
+    color: #19d3da;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#main-section {
+    overflow: hidden; /* Makee this div contain its floated children */
+    width: 100%;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #eeeeee;
+}
+
+
+#image-section {
+    margin-right: 2em;
+    padding: 0 0 0 2em;
+    float: left;
+}
+
+img {
+    float: left;
+    width: 600px;
+    height: 500;
+}
+
+
+#righthand-side {
+    padding: 3em 3em 0 0;
+    overflow: hidden; /* Make this div take up the rest of the horizontal space, and no more */
+}
+
+h2 {
+    color: #373a40;
+    font-family: 'Bitter', serif;
+}
