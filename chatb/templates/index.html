@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %} chatb - Home Page {% endblock %}
+{% block content %}
+	<p>Welcome Back 👋</p>
+	<form id="form" action="" method="post">
+		{{ lform.csrf_token }}
+		{{ lform.username(id="username", placeholder="Enter your username", autocomplete="off") }}
+		{{ lform.password(id="password", placeholder="Enter your password", autocomplete="off") }}
+
+		{% for error in lform.password.errors %}
+			<span style="color: red;"><ul><li>{{error}}</li></ul></span>
+		{% endfor %}
+
+		{{ lform.login_btn(id="login-btn")}}
+	</form>
+	<p style="font-size: 1em;"> First time here - <a href="{{ url_for('register') }}"> Sign Up </a> </p>
+{% endblock %}

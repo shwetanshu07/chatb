@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #A6C1EE 0%, rgba(251, 194, 235, 0) 100%), #FFFFFF;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo{
+    height: 45px;
+    margin: 0.5rem 1.5rem;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+}
+
+.col1{
+    height: 90vh;
+}
+
+.col1 > p{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0.5rem 1.5rem;
+}
+
+.room-names li{
+    list-style: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 0.5rem 1.5rem;
+}
+
+.room-names li:hover{
+    background-color: #859cad;
+    cursor: pointer;
+}
+
+.col2{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+.chat-area{
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    background-color: white;
+    border: black 1px solid;
+    height: 85%;
+}
+
+.input-area{
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 89%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.send-msg{
+    margin: 1rem 1rem 2rem 1rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    padding: .8rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px #999;
+}
+
+.send-msg:hover {background-color: #3e8e41}
+
+.send-msg:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.logoutbtn{
+    text-decoration: none;
+    margin: 0.8rem 1rem;
+    cursor: pointer;
+    padding: 10px 10px;
+    background-color: #DA6643;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+}
+.logoutbtn:hover {
+    background-color:#a1472b;
+}
+
+section{
+    margin: 1rem 1rem;
+}
+
+.username{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: medium;
+}
+
+.message{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: medium;
+}
+
+.time{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: medium;
+    color: grey;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatstyle.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <title>chatb-Chat</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <!-- <p>{{ current_user }}</p> -->
+        <a href="{{ url_for('logout') }}" class="logoutbtn">Log Out</a>
+    </header>
+    <main>
+        <div class="col1">
+            <p> Rooms </p>
+            <ul class="room-names">
+                {% for room in rooms %}
+                    <li class="select-room">{{ room }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col2">
+            <!-- Div where the chat is displayed -->
+            <div id="chat-area-display" class="chat-area"></div>
+            <!-- Div for input -->
+            <div class="input-area">
+                <input type="text" id="user-msg-area" class="user-msg" placeholder="Type Here ... ">
+                <button type="button" class="send-msg">SEND</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Using the username in JS -->
+    <script type="text/javascript">
+        const username = `{{ current_user.username }}`
+    </script>
+
+    <!-- Including SocketIO library -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="
+    crossorigin="anonymous"></script>    
+    <script src="{{ url_for('static', filename='scripts/socketio.js') }}"></script>
+    
+</body>
+</html>

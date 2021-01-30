@@ -1,0 +1,86 @@
+html, body{
+    height: 100%;
+}
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #A6C1EE 0%, rgba(251, 194, 235, 0) 100%), #FFFFFF;
+}
+
+#header{
+    height: 10%;
+	
+}
+
+#logo{
+	height: 45px;
+	margin-left: 1.5em;
+	margin-top: 1em;
+}
+
+#main{
+    height: 85%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px 20px 40px;
+}
+
+#right-div{
+    width:40%;
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+#short-description p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    margin: 0;
+}
+#form-div p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+#form input{
+    display: block;
+    width: 70%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#form input[type="submit"]{
+    width: 150px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    font-weight: 800;
+    font-size: medium;
+}
+
+#login-btn{
+    background-color: #66DBCA;
+}
+#login-btn:hover{
+    background-color: #4aa396;
+}
+
+#signup-btn{
+    background-color: #DA6643;
+}
+#signup-btn:hover{
+    background-color: #a1472b;
+}
+
+#left-div{
+    width:40%;
+    height: 100%;
+}
+

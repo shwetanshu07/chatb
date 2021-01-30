@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %} chatb - Sign Up {% endblock %}
+{% block content %}
+	<p>New User 👋</p>
+	<form id="form" action="" method="post">
+		{{ rform.csrf_token }}
+		{{ rform.username(id="username", placeholder="Create a username", autocomplete="off") }}
+
+		{% if rform.username.errors %}
+		<ul>
+			{% for error in rform.username.errors %}
+			<span style="color: red;"><li>{{error}}</li></span>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
+		{{ rform.password(id="password", placeholder="Create a password", autocomplete="off") }}
+
+		{% if rform.password.errors %}
+		<ul>
+			{% for error in rform.password.errors %}
+			<span style="color: red;"><li>{{error}}</li></span>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
+		{{ rform.signup_btn(id="signup-btn") }}
+	</form>
+{% endblock %}

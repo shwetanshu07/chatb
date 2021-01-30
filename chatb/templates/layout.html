@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <div id="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Chatb logo" id="logo">
+    </div>
+   
+    <div id="main">
+        <div id="right-div">
+            <div id="short-description">
+                <p>Join <span style="color: #DA6643;">Chatrooms.</span></p>
+                <p>Meet new people.</p>
+            </div>
+			<div id="form-div">
+				{% block content %} {% endblock %}
+			</div>
+        </div>
+        <div id="left-div">
+            <img src="{{ url_for('static', filename='images/bitmap.png') }}" height="500px">
+        </div>
+    </div>
+</body>
+</html>
